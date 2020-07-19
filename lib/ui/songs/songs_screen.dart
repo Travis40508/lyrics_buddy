@@ -45,7 +45,7 @@ class _SongsScreenState extends State<SongsScreen> {
                     return InkWell(
                       child: SongCard(song),
                       onTap: () {
-                        songLibrary.songSelected(song);
+                        songLibrary.fetchSongLyrics(song);
                         Navigator.push(context, MaterialPageRoute(builder: (context) => ChangeNotifierProvider.value(
                             value: songLibrary,
                           child: LyricsScreen(),

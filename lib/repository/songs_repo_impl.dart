@@ -48,9 +48,6 @@ Whisper words of wisdom, let it be
   List<Song> _fetchSongs() {
     return [
       Song('Lose Yourself', 'Eminem', _eminemImage, _loseYourselfAlbumImage, 'Lose yourself lyrics'),
-      Song('Let it be', 'The Beatles', _beatlesImage, _letItBeImage, _letItBeLyrics),
-      Song('Another brick in the wall', 'Pink Floyd', _pinkFloydImage, _theWallImage, "We don't need no education..."),
-      Song('Kids', 'MGMT', _mgmtImage, _oracularSpectacularImage, 'Kids lyrics...'),
       Song('Tiny Dancer', 'Elton John', _eltonJohnImage, _madAlbumImage, 'Blue jean baby, air lay lady...')
     ];
   }
@@ -58,6 +55,18 @@ Whisper words of wisdom, let it be
   @override
   Future<List<Song>> fetchAllSongs() {
     return Future.value(_fetchSongs());
+  }
+
+  @override
+  Future<List<Song>> searchForSongs(final String query) {
+    print('@@@ making call!');
+    return Future.value(
+      [
+        Song('Let it be', 'The Beatles', _beatlesImage, _letItBeImage, _letItBeLyrics),
+        Song('Another brick in the wall', 'Pink Floyd', _pinkFloydImage, _theWallImage, "We don't need no education..."),
+        Song('Kids', 'MGMT', _mgmtImage, _oracularSpectacularImage, 'Kids lyrics...'),
+      ]
+    );
   }
 
 }
