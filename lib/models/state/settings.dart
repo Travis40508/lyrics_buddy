@@ -19,6 +19,7 @@ class Settings extends ChangeNotifier {
 
   double _fontSizePreference;
   double get fontSizePreference => _fontSizePreference;
+  int get fontSizePreferenceAsWholeNum => _fontSizePreference.ceil();
 
   Settings() {
     _fetchCurrentTheme();

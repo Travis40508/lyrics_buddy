@@ -1,6 +1,4 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:lyrics_buddy/models/song.dart';
 import 'package:lyrics_buddy/models/state/settings.dart';
 import 'package:lyrics_buddy/models/state/song_library.dart';
 import 'package:lyrics_buddy/ui/widgets/song_card.dart';

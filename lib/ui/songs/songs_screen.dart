@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lyrics_buddy/models/state/song_library.dart';
+import 'package:lyrics_buddy/routes/settings/settings_route.dart';
 import 'package:lyrics_buddy/ui/lyrics/lyrics_screen.dart';
 import 'package:lyrics_buddy/ui/widgets/song_card.dart';
 import 'package:lyrics_buddy/utils/constants.dart';
@@ -25,6 +26,12 @@ class _SongsScreenState extends State<SongsScreen> {
         ),
         centerTitle: true,
         backgroundColor: Theme.of(context).primaryColor,
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(Icons.settings),
+            onPressed: () => Navigator.pushNamed(context, SettingsRoute().routeName()),
+          )
+        ],
       ),
       body: Consumer<SongLibrary>(
         builder: (_, songLibrary, __ ,) {
