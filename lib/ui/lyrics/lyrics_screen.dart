@@ -27,20 +27,6 @@ class _LyricsScreenState extends State<LyricsScreen> {
             color: Theme.of(context).accentColor
           ),
         ),
-        actions: <Widget>[
-          IconButton(
-            icon: Icon(Icons.add),
-            onPressed: () => Provider.of<Settings>(context, listen: false).updatePreferredFontSize(
-              Provider.of<Settings>(context, listen: false).fontSizePreference + 10.0
-            ),
-          ),
-          IconButton(
-            icon: Icon(Icons.remove),
-            onPressed: () => Provider.of<Settings>(context, listen: false).updatePreferredFontSize(
-                Provider.of<Settings>(context, listen: false).fontSizePreference - 10.0
-            ),
-          )
-        ],
       ),
       body: _buildBody(),
     );
