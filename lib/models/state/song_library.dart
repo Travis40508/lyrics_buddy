@@ -1,10 +1,15 @@
 
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:lyrics_buddy/models/song.dart';
 import 'package:lyrics_buddy/repository/songs_repo.dart';
 import 'package:rxdart/rxdart.dart';
 
 class SongLibrary extends ChangeNotifier {
+
+  Timer _timer;
+
   final List<Song> _songs = <Song>[];
   List<Song> get songs => _songs;
 
@@ -34,13 +39,18 @@ class SongLibrary extends ChangeNotifier {
   }
 
   void onSearchQueryChanged(final String query) {
-    Stream.value(query)
-        .debounceTime(Duration(milliseconds: 500))
-        .where((query) => query.isNotEmpty)
-        .flatMap((query) => _repo.searchForSongs(query).asStream())
-        .listen((songs) {
-          _searchResults.addAll(songs);
-          notifyListeners();
-        }, onError: (e) => print(e));
+    if (_timer?.isActive ?? false) {
+      _timer.cancel();
+    }
+    _timer = Timer(Duration(milliseconds: 400), () async {
+      final songs = await _repo.searchForSongs(query);
+
+      if (songs.isNotEmpty) {
+        _searchResults.clear();
+        _searchResults.addAll(songs);
+
+        notifyListeners();
+      }
+    });
   }
 }

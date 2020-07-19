@@ -24,7 +24,10 @@ class LyricsBuddyApp extends StatelessWidget {
             initialRoute: AllSongsRoute().routeName(),
 
             routes: {
-              SearchRoute().routeName(): (context) => SearchScreen(),
+              SearchRoute().routeName(): (context) => ChangeNotifierProvider(
+                create: (context) => SongLibrary(SongsRepoImpl()),
+                child: SearchScreen(),
+              ),
               AllSongsRoute().routeName(): (context) => ChangeNotifierProvider(
                 create: (context) => SongLibrary(SongsRepoImpl()),
                 child: SongsScreen(),
