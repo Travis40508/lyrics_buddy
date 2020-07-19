@@ -4,21 +4,31 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class Settings extends ChangeNotifier {
-  AppTheme _currentTheme;
-  AppTheme get currentTheme => _currentTheme;
+
   static const _themeKey = 'theme_key';
   static const _darkThemeKey = 'dark_theme_key';
   static const _lightThemeKey = 'light_theme_key';
+
+  static const _fontSizeKey = 'font_size_key';
+  static const _defaultFontSize = 16.0;
+
   SharedPreferences _prefs;
+
+  AppTheme _currentTheme;
+  AppTheme get currentTheme => _currentTheme;
+
+  double _fontSizePreference;
+  double get fontSizePreference => _fontSizePreference;
 
   Settings() {
     _fetchCurrentTheme();
+    _fetchCurrentFontSizePreference();
   }
 
   void _fetchCurrentTheme() async {
     _setDefaultTheme();
 
-    _prefs = await SharedPreferences.getInstance();
+    _prefs ??= await SharedPreferences.getInstance();
     final String currentTheme = _prefs.getString(_themeKey) ?? _darkThemeKey;
 
     _currentTheme = currentTheme == _darkThemeKey ? DarkTheme() : LightTheme();
@@ -35,6 +45,27 @@ class Settings extends ChangeNotifier {
   //Sets a default theme while we wait for the theme to be fetched
   void _setDefaultTheme() {
     _currentTheme = DarkTheme();
+    notifyListeners();
+  }
+
+  void _fetchCurrentFontSizePreference() async {
+    _setDefaultFontSizePreference();
+
+    _prefs ??= await SharedPreferences.getInstance();
+    _fontSizePreference = _prefs.getDouble(_fontSizeKey) ?? _defaultFontSize;
+
+    notifyListeners();
+  }
+
+  void updatePreferredFontSize(final double size) async {
+    _fontSizePreference = size;
+    notifyListeners();
+
+    await _prefs.setDouble(_fontSizeKey, size);
+  }
+
+  void _setDefaultFontSizePreference() {
+    _fontSizePreference = _defaultFontSize;
     notifyListeners();
   }
 }

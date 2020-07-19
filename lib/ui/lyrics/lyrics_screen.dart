@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:lyrics_buddy/models/song.dart';
+import 'package:lyrics_buddy/models/state/settings.dart';
 import 'package:lyrics_buddy/models/state/song_library.dart';
 import 'package:lyrics_buddy/ui/widgets/song_card.dart';
 import 'package:lyrics_buddy/utils/constants.dart';
@@ -26,6 +27,20 @@ class _LyricsScreenState extends State<LyricsScreen> {
             color: Theme.of(context).accentColor
           ),
         ),
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(Icons.add),
+            onPressed: () => Provider.of<Settings>(context, listen: false).updatePreferredFontSize(
+              Provider.of<Settings>(context, listen: false).fontSizePreference + 10.0
+            ),
+          ),
+          IconButton(
+            icon: Icon(Icons.remove),
+            onPressed: () => Provider.of<Settings>(context, listen: false).updatePreferredFontSize(
+                Provider.of<Settings>(context, listen: false).fontSizePreference - 10.0
+            ),
+          )
+        ],
       ),
       body: _buildBody(),
     );
@@ -41,7 +56,8 @@ class _LyricsScreenState extends State<LyricsScreen> {
               songLibrary.selectedSong.lyrics,
               style: TextStyle(
                 color: Theme.of(context).accentColor,
-                fontWeight: FontWeight.bold
+                fontWeight: FontWeight.bold,
+                fontSize: Provider.of<Settings>(context).fontSizePreference
               ),
               textAlign: TextAlign.center,
             )
