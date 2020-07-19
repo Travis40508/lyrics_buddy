@@ -1,7 +1,9 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:lyrics_buddy/models/state/lyrics_buddy_theme.dart';
+import 'package:lyrics_buddy/models/state/settings.dart';
 import 'package:lyrics_buddy/models/state/song_library.dart';
+import 'package:lyrics_buddy/routes/lyrics/lyrics_route.dart';
+import 'package:lyrics_buddy/ui/lyrics/lyrics_screen.dart';
 import 'package:lyrics_buddy/ui/widgets/song_card.dart';
 import 'package:lyrics_buddy/utils/constants.dart';
 import 'package:provider/provider.dart';
@@ -35,7 +37,7 @@ class _SongsScreenState extends State<SongsScreen> {
                 color: Theme.of(context).accentColor
               ),
             ),
-            onPressed: () => Provider.of<LyricsBuddyTheme>(context, listen: false).changeTheme(),
+            onPressed: () => Provider.of<Settings>(context, listen: false).changeTheme(),
           )
         ],
       ),
@@ -48,7 +50,16 @@ class _SongsScreenState extends State<SongsScreen> {
                   itemBuilder: (context, index) {
                     final song = songLibrary.songs[index];
 
-                    return SongCard(song);
+                    return InkWell(
+                      child: SongCard(song),
+                      onTap: () {
+                        songLibrary.songSelected(song);
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => ChangeNotifierProvider.value(
+                            value: songLibrary,
+                          child: LyricsScreen(),
+                        )));
+                      }
+                    );
                   },
                 ),
               );

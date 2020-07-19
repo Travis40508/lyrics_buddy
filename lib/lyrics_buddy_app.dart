@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:lyrics_buddy/models/state/lyrics_buddy_theme.dart';
+import 'package:lyrics_buddy/models/state/settings.dart';
 import 'package:lyrics_buddy/models/state/song_library.dart';
 import 'package:lyrics_buddy/repository/songs_repo_impl.dart';
 import 'package:lyrics_buddy/routes/search/search_route.dart';
@@ -13,9 +13,9 @@ class LyricsBuddyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
-      create: (context) => LyricsBuddyTheme(),
-      child: Consumer<LyricsBuddyTheme>(
-        builder: (_, appTheme, __) {
+      create: (context) => Settings(),
+      child: Consumer<Settings>(
+        builder: (_, settings, __) {
           return MaterialApp(
             title: Constants.appTitle,
             debugShowCheckedModeBanner: false,
@@ -26,9 +26,9 @@ class LyricsBuddyApp extends StatelessWidget {
               AllSongsRoute().routeName(): (context) => ChangeNotifierProvider(
                 create: (context) => SongLibrary(SongsRepoImpl()),
                 child: SongsScreen(),
-              )
+              ),
             },
-            theme: appTheme.currentTheme.getThemeData(),
+            theme: settings.currentTheme.getThemeData(),
           );
         },
       ),

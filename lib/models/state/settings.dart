@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class LyricsBuddyTheme extends ChangeNotifier {
+class Settings extends ChangeNotifier {
   AppTheme _currentTheme;
   AppTheme get currentTheme => _currentTheme;
   static const _themeKey = 'theme_key';
@@ -11,7 +11,7 @@ class LyricsBuddyTheme extends ChangeNotifier {
   static const _lightThemeKey = 'light_theme_key';
   SharedPreferences _prefs;
 
-  LyricsBuddyTheme() {
+  Settings() {
     _fetchCurrentTheme();
   }
 

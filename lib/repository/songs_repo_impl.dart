@@ -9,6 +9,32 @@ class SongsRepoImpl implements SongsRepo {
 
   final _beatlesImage = 'https://cdns-images.dzcdn.net/images/artist/e7f8aad6226980723164ee42e171bd17/250x250-000000-80-0-0.jpg';
   final _letItBeImage = 'https://cdns-images.dzcdn.net/images/cover/fcf05300b7c17ec77a6d01028a4bef61/250x250-000000-80-0-0.jpg';
+  final _letItBeLyrics = '''
+  When I find myself in times of trouble, Mother Mary comes to me
+Speaking words of wisdom, let it be
+And in my hour of darkness she is standing right in front of me
+Speaking words of wisdom, let it be
+Let it be, let it be, let it be, let it be
+Whisper words of wisdom, let it be
+And when the broken hearted people living in the world agree
+There will be an answer, let it be
+For though they may be parted, there is still a chance that they will see
+There will be an answer, let it be
+Let it be, let it be, let it be, let it be
+There will be an answer, let it be
+Let it be, let it be, let it be, let it be
+Whisper words of wisdom, let it be
+Let it be, let it be, let it be, let it be
+Whisper words of wisdom, let it be
+And when the night is cloudy there is still a light that shines on me
+Shine until tomorrow, let it be
+I wake up to the sound of music, Mother Mary comes to me
+Speaking words of wisdom, let it be
+Let it be, let it be, let it be, yeah, let it be
+There will be an answer, let it be
+Let it be, let it be, let it be, yeah, let it be
+Whisper words of wisdom, let it be
+''';
 
   final _pinkFloydImage = 'https://cdns-images.dzcdn.net/images/artist/32f4286d3082999df24439308e2d7669/250x250-000000-80-0-0.jpg';
   final _theWallImage = 'https://cdns-images.dzcdn.net/images/cover/7e25330c468696e8bca65050995d2fc7/250x250-000000-80-0-0.jpg';
@@ -22,7 +48,7 @@ class SongsRepoImpl implements SongsRepo {
   List<Song> _fetchSongs() {
     return [
       Song('Lose Yourself', 'Eminem', _eminemImage, _loseYourselfAlbumImage, 'Lose yourself lyrics'),
-      Song('Let it be', 'The Beatles', _beatlesImage, _letItBeImage, 'When I find myself in times of trouble...'),
+      Song('Let it be', 'The Beatles', _beatlesImage, _letItBeImage, _letItBeLyrics),
       Song('Another brick in the wall', 'Pink Floyd', _pinkFloydImage, _theWallImage, "We don't need no education..."),
       Song('Kids', 'MGMT', _mgmtImage, _oracularSpectacularImage, 'Kids lyrics...'),
       Song('Tiny Dancer', 'Elton John', _eltonJohnImage, _madAlbumImage, 'Blue jean baby, air lay lady...')
