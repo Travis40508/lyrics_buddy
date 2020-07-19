@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lyrics_buddy/models/state/lyrics_buddy_theme.dart';
 import 'package:lyrics_buddy/models/state/song_library.dart';
 import 'package:lyrics_buddy/repository/songs_repo_impl.dart';
 import 'package:lyrics_buddy/routes/search/search_route.dart';
@@ -11,18 +12,26 @@ import 'package:provider/provider.dart';
 class LyricsBuddyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: Constants.appTitle,
-      debugShowCheckedModeBanner: false,
-      initialRoute: AllSongsRoute().routeName(),
+    return ChangeNotifierProvider(
+      create: (context) => LyricsBuddyTheme(),
+      child: Consumer<LyricsBuddyTheme>(
+        builder: (_, appTheme, __) {
+          return MaterialApp(
+            title: Constants.appTitle,
+            debugShowCheckedModeBanner: false,
+            initialRoute: AllSongsRoute().routeName(),
 
-      routes: {
-        SearchRoute().routeName(): (context) => SearchScreen(),
-        AllSongsRoute().routeName(): (context) => ChangeNotifierProvider(
-          create: (context) => SongLibrary(SongsRepoImpl()),
-          child: SongsScreen(),
-        )
-      },
+            routes: {
+              SearchRoute().routeName(): (context) => SearchScreen(),
+              AllSongsRoute().routeName(): (context) => ChangeNotifierProvider(
+                create: (context) => SongLibrary(SongsRepoImpl()),
+                child: SongsScreen(),
+              )
+            },
+            theme: appTheme.currentTheme.getThemeData(),
+          );
+        },
+      ),
     );
   }
 }

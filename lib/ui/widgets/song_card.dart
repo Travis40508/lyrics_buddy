@@ -18,7 +18,7 @@ class SongCard extends StatelessWidget {
           fit: StackFit.passthrough,
           children: <Widget>[
             Opacity(
-              opacity: .6,
+              opacity: .7,
               child: Row(
                 children: <Widget>[
                   Expanded(
@@ -57,7 +57,7 @@ class SongCard extends StatelessWidget {
                         opacity: .5,
                         child: Card(
                           elevation: 4.0,
-                          color: Colors.black,
+                          color: Theme.of(context).primaryColor,
                         ),
                       ),
                     ),
@@ -67,7 +67,7 @@ class SongCard extends StatelessWidget {
                         _song.artistName,
                         overflow: TextOverflow.ellipsis,
                         style: TextStyle(
-                            color: Colors.white,
+                            color: Theme.of(context).accentColor,
                             fontWeight: FontWeight.bold,
                             fontSize: 14.0
                         ),
@@ -87,7 +87,7 @@ class SongCard extends StatelessWidget {
                         opacity: .5,
                         child: Card(
                           elevation: 4.0,
-                          color: Colors.black,
+                          color: Theme.of(context).primaryColor,
                         ),
                       ),
                     ),
@@ -97,7 +97,7 @@ class SongCard extends StatelessWidget {
                         _song.title,
                         overflow: TextOverflow.ellipsis,
                         style: TextStyle(
-                            color: Colors.white,
+                            color: Theme.of(context).accentColor,
                             fontWeight: FontWeight.bold,
                             fontSize: 14.0
                         ),
