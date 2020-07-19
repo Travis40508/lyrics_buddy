@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:lyrics_buddy/models/state/lyrics_buddy_theme.dart';
 import 'package:lyrics_buddy/models/state/song_library.dart';
 import 'package:lyrics_buddy/ui/widgets/song_card.dart';
+import 'package:lyrics_buddy/utils/constants.dart';
 import 'package:provider/provider.dart';
 
 class SongsScreen extends StatefulWidget {
@@ -18,7 +19,7 @@ class _SongsScreenState extends State<SongsScreen> {
       backgroundColor: Theme.of(context).primaryColor,
       appBar: AppBar(
         title: Text(
-            'All Songs',
+            Constants.allSongsScreenName,
           style: TextStyle(
             color: Theme.of(context).accentColor
           ),

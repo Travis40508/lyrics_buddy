@@ -54,7 +54,7 @@ class SongCard extends StatelessWidget {
                   children: <Widget>[
                     Positioned.fill(
                       child: Opacity(
-                        opacity: .5,
+                        opacity: .7,
                         child: Card(
                           elevation: 4.0,
                           color: Theme.of(context).primaryColor,
@@ -84,7 +84,7 @@ class SongCard extends StatelessWidget {
                   children: <Widget>[
                     Positioned.fill(
                       child: Opacity(
-                        opacity: .5,
+                        opacity: .7,
                         child: Card(
                           elevation: 4.0,
                           color: Theme.of(context).primaryColor,
