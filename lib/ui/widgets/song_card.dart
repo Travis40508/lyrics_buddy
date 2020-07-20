@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:lyrics_buddy/models/song.dart';
+import 'package:lyrics_buddy/utils/constants.dart';
 
 class SongCard extends StatelessWidget {
   
@@ -24,10 +25,15 @@ class SongCard extends StatelessWidget {
                   Expanded(
                     child: Hero(
                       tag: '${_song.artistName}${_song.title}',
-                      child: Image(
-                        fit: BoxFit.cover,
-                        image: CachedNetworkImageProvider(
-                            _song.artistImage
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.only(
+                          bottomLeft: Radius.circular(25.0),
+                        ),
+                        child: Image(
+                          fit: BoxFit.cover,
+                          image: CachedNetworkImageProvider(
+                              _song.artistImage
+                          ),
                         ),
                       ),
                     ),
@@ -35,10 +41,15 @@ class SongCard extends StatelessWidget {
                   Expanded(
                     child: Hero(
                       tag: '${_song.title}${_song.artistName} ',
-                      child: Image(
-                        fit: BoxFit.cover,
-                        image: CachedNetworkImageProvider(
-                            _song.albumImage
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.only(
+                          topRight: Radius.circular(Constants.borderRadius),
+                        ),
+                        child: Image(
+                          fit: BoxFit.cover,
+                          image: CachedNetworkImageProvider(
+                              _song.albumImage
+                          ),
                         ),
                       ),
                     ),
