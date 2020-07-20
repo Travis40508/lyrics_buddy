@@ -25,9 +25,39 @@ class _LyricsScreenState extends State<LyricsScreen> {
             color: Theme.of(context).accentColor
           ),
         ),
+        actions: <Widget>[
+          Consumer<SongLibrary>(
+            builder: (_, songLibrary, __) {
+              return Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Center(
+                  child: InkWell(
+                    onTap: () => songLibrary.isSongInLibrary() ? _editSong() : _saveSong(),
+                    child: Text(
+                      songLibrary.isSongInLibrary() ? 'Edit' : 'Save',
+                      style: TextStyle(
+                        color: Theme.of(context).accentColor,
+                        fontSize: 14.0,
+                        fontWeight: FontWeight.bold
+                      ),
+                    ),
+                  ),
+                ),
+              );
+            },
+          )
+        ],
       ),
       body: _buildBody(),
     );
+  }
+
+  void _editSong() {
+
+  }
+
+  void _saveSong() {
+    
   }
 
   Widget _buildBody() {

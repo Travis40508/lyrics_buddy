@@ -53,4 +53,8 @@ class SongLibrary extends ChangeNotifier {
       }
     });
   }
+
+  bool isSongInLibrary() {
+    return songs.firstWhere((song) => song.title + song.artistName == selectedSong.title + selectedSong.artistName, orElse: () => null) != null;
+  }
 }
