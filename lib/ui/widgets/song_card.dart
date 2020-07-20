@@ -12,50 +12,58 @@ class SongCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: MediaQuery.of(context).size.height / 3,
-      child: Card(
-        color: Colors.black,
-        elevation: 4.0,
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
         child: Stack(
           fit: StackFit.passthrough,
           children: <Widget>[
-            Opacity(
-              opacity: .7,
-              child: Row(
-                children: <Widget>[
-                  Expanded(
-                    child: Hero(
-                      tag: '${_song.artistName}${_song.title}',
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.only(
-                          bottomLeft: Radius.circular(25.0),
-                        ),
-                        child: Image(
-                          fit: BoxFit.cover,
-                          image: CachedNetworkImageProvider(
-                              _song.artistImage
+            Row(
+              children: <Widget>[
+                Expanded(
+                  child: Hero(
+                    tag: '${_song.artistName}${_song.title}',
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.only(
+                        bottomLeft: Radius.circular(25.0),
+                      ),
+                      child: Container(
+                        color: Colors.black,
+                        child: Opacity(
+                          opacity: Constants.cardOpacity,
+                          child: Image(
+                            fit: BoxFit.cover,
+                            image: CachedNetworkImageProvider(
+                                _song.artistImage
+                            ),
                           ),
                         ),
                       ),
                     ),
                   ),
-                  Expanded(
-                    child: Hero(
-                      tag: '${_song.title}${_song.artistName} ',
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.only(
-                          topRight: Radius.circular(Constants.borderRadius),
-                        ),
-                        child: Image(
-                          fit: BoxFit.cover,
-                          image: CachedNetworkImageProvider(
-                              _song.albumImage
+                ),
+                Expanded(
+                  child: Hero(
+                    tag: '${_song.title}${_song.artistName} ',
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.only(
+                        topRight: Radius.circular(Constants.borderRadius),
+                      ),
+                      child: Container(
+                        color: Colors.black,
+                        child: Opacity(
+                          opacity: Constants.cardOpacity,
+                          child: Image(
+                            fit: BoxFit.cover,
+                            image: CachedNetworkImageProvider(
+                                _song.albumImage
+                            ),
                           ),
                         ),
                       ),
                     ),
-                  )
-                ],
-              ),
+                  ),
+                )
+              ],
             ),
             Positioned(
                 top: 10.0,

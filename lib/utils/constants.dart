@@ -3,6 +3,9 @@ class Constants {
   static const appTitle = 'Lyrics Buddy';
   static const borderRadius = 25.0;
 
+  //Song Card
+  static const cardOpacity = .7;
+
   //Songs Screen
   static const allSongsScreenName = 'All Songs';
 

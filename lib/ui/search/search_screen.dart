@@ -27,25 +27,29 @@ class _SearchScreenState extends State<SearchScreen> {
       ),
       body: Column(
         children: <Widget>[
-          TextField(
-            style: TextStyle(
-              fontSize: 18.0
-            ),
-            maxLength: 20,
-            maxLines: 1,
-            cursorColor: Theme.of(context).accentColor,
-            decoration: InputDecoration(
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.only(topLeft: Radius.circular(Constants.borderRadius), bottomRight: Radius.circular(Constants.borderRadius))
-              ),
-              fillColor: Theme.of(context).accentColor,
-              filled: true,
-              hintText: Constants.searchHint,
-              hintStyle: TextStyle(
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: TextField(
+              style: TextStyle(
+                fontSize: 18.0,
                 color: Theme.of(context).primaryColor
-              )
+              ),
+              maxLength: 20,
+              maxLines: 1,
+              cursorColor: Theme.of(context).accentColor,
+              decoration: InputDecoration(
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.only(topLeft: Radius.circular(Constants.borderRadius), bottomRight: Radius.circular(Constants.borderRadius))
+                ),
+                fillColor: Theme.of(context).accentColor,
+                filled: true,
+                hintText: Constants.searchHint,
+                hintStyle: TextStyle(
+                  color: Theme.of(context).primaryColor
+                )
+              ),
+              onChanged: (query) => Provider.of<SongLibrary>(context, listen: false).onSearchQueryChanged(query),
             ),
-            onChanged: (query) => Provider.of<SongLibrary>(context, listen: false).onSearchQueryChanged(query),
           ),
           Consumer<SongLibrary>(
             builder: (_, songLibrary, __) {
