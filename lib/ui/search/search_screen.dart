@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lyrics_buddy/models/state/song_library.dart';
+import 'package:lyrics_buddy/routes/lyrics/lyrics_route.dart';
 import 'package:lyrics_buddy/ui/lyrics/lyrics_screen.dart';
 import 'package:lyrics_buddy/ui/widgets/song_card.dart';
 import 'package:lyrics_buddy/utils/constants.dart';
@@ -64,10 +65,7 @@ class _SearchScreenState extends State<SearchScreen> {
                       child: SongCard(song),
                       onTap: () {
                         songLibrary.fetchSongLyrics(song);
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => ChangeNotifierProvider.value(
-                          value: songLibrary,
-                          child: LyricsScreen(),
-                        )));
+                        Navigator.pushNamed(context, LyricsRoute().routeName());
                       },
                     );
                   },

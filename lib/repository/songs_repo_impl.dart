@@ -59,7 +59,6 @@ Whisper words of wisdom, let it be
 
   @override
   Future<List<Song>> searchForSongs(final String query) {
-    print('@@@ making call!');
     return Future.value(
       [
         Song('Let it be', 'The Beatles', _beatlesImage, _letItBeImage, _letItBeLyrics),
@@ -67,6 +66,11 @@ Whisper words of wisdom, let it be
         Song('Kids', 'MGMT', _mgmtImage, _oracularSpectacularImage, 'Kids lyrics...'),
       ]
     );
+  }
+
+  @override
+  bool saveSong(final Song selectedSong) {
+    return true;
   }
 
 }

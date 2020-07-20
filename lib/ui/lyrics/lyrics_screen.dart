@@ -57,7 +57,7 @@ class _LyricsScreenState extends State<LyricsScreen> {
   }
 
   void _saveSong() {
-    
+    Provider.of<SongLibrary>(context, listen: false).saveSong();
   }
 
   Widget _buildBody() {
